@@ -51,7 +51,8 @@
           blog:{
             title:'',
             content:'',
-            categories:[]
+            categories:[],
+            author:''
           },
         authors:['kebo','james', 'curry'],
         submmited:false,
@@ -59,11 +60,7 @@
     },
     methods:{
         post:function () {
-          this.$http.post('http://jsonplaceholder.typicode.com/posts',{
-            title:this.blog.title,
-            body:this.blog.content,
-            userId:1
-          })
+          this.$http.post('https://vue-blog-e72a8.firebaseio.com/posts.json', this.blog)
             .then(function (data) {
 
               this.submmited = true;

@@ -1,7 +1,8 @@
 <template>
     <div id="single-blog">
         <h1>{{blog.title}}</h1>
-        <article>{{blog.body}}</article>
+        <article>{{blog.content}}</article>
+        <P>作者：{{blog.author}}</P>
     </div>
 </template>
 
@@ -15,10 +16,14 @@ export default {
         }
     },
     created(){
-        this.$http.get('https://jsonplaceholder.typicode.com/posts/' + this.id)
+        this.$http.get('https://vue-blog-e72a8.firebaseio.com/posts/' + this.id + ".json")
         .then(function(data){
             //data.console.log(data);
-            this.blog = data.body;
+            //this.blog = data.body;
+            return data.json();
+        })
+        .then(function(data){
+            this.blog = data;
         })
     }
 }
