@@ -8,6 +8,7 @@
           </router-link>
         <article>{{blog.content | to-snippet}}</article>
       </div>
+      <div class="back-top"><a href="#"><i class="el-icon-caret-top"></i></a></div>
     </div>
 </template>
 
@@ -49,7 +50,7 @@
 
 <style scoped>
 #showBlogs{
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
 
 }
@@ -71,5 +72,17 @@
        width: 100%;
        box-sizing: border-box;
   }
-
+.back-top{
+  position: fixed;
+  top: 600px;
+  right: 380px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e4e4e4;
+  border-radius: 20px;
+}
+.back-top i{
+  font-size: 40px;
+  color: #bfbfbf;
+}
 </style>

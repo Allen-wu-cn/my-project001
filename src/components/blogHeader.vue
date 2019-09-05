@@ -37,7 +37,7 @@ a{
     
 }
 nav{
-    background: crimson;
+    background: rgb(86, 240, 111);
     padding: 30px 0;
     margin-bottom: 20px;
 }

@@ -54,7 +54,7 @@
             categories:[],
             author:''
           },
-        authors:['kebo','james', 'curry'],
+        authors:['kebo','james', 'curry','allen-wu'],
         submmited:false,
       }
     },

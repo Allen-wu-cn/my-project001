@@ -31,7 +31,7 @@ export default {
 
 <style>
 #single-blog{
-    max-width: 560px;
+    max-width: 720px;
     margin: 0 auto;
     padding: 10px;
     background: #eee;

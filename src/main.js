@@ -5,11 +5,14 @@ import VueResource from  'vue-resource'
 import VueRouter from 'vue-router'
 import App from './App'
 import Routes from  './routes'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-Vue.use(VueResource)
-Vue.use(VueRouter)
+Vue.use(VueResource);
+Vue.use(VueRouter);
+Vue.use(ElementUI);
 
 
 //自定义指令
@@ -56,6 +59,7 @@ new Vue({
   el: '#app',
   components: { App },
   template: '<App/>',
-  router : router
+  router : router,
+  render: h => h(App)
 
 })
