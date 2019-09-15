@@ -1,16 +1,21 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueResource from  'vue-resource'
+//import VueResource from  'vue-resource'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
 import App from './App'
 import Routes from  './routes'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+// 重置默认样式
+import './assets/style/reset.css'
 
 Vue.config.productionTip = false;
 
-Vue.use(VueResource);
+//Vue.use(VueResource);
+Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(ElementUI);
 

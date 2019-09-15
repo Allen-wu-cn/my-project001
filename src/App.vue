@@ -2,26 +2,28 @@
   <div id="app">
 <!--     <addBlog></AddBlog>-->
 <!--    <showBlogs></showBlogs>-->
-    <blog-header></blog-header>
+    <BlogHeader></BlogHeader>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import addBlog from  './components/addBlog'
-import showBlogs from  './components/showBlogs'
-import blogHeader from  './components/blogHeader'
+//import addBlog from  './components/addBlog'
+//import showBlogs from  './components/showBlogs'
+import BlogHeader from './components/BlogHeader'
 
 export default {
   name: 'App',
   components: {
-    addBlog,
-    showBlogs,
-    blogHeader
+   // addBlog,
+    //showBlogs,
+    BlogHeader
   }
 }
 </script>
 
 <style>
-
+#app{
+  font-family: 微软雅黑;
+}
 </style>

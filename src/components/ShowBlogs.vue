@@ -1,20 +1,21 @@
-<template xmlns:v-theme="http://www.w3.org/1999/xhtml">
-    <div v-theme:column="'narrow'" id="showBlogs">
+<template >
+    <div  id="showBlogs">
        <h1>博客总览</h1>
-      <input type="text" v-model="search" placeholder="搜索">
+      <input type="text" v-model="search" placeholder="输入题目搜索...">
       <div v-for="blog in filteredBlogs" class="single-blog">
         <router-link v-bind:to="'/blog/' + blog.id">
           <h2 v-titleColor>{{blog.title | to-uppercase}}</h2>
           </router-link>
-        <article>{{blog.content | to-snippet}}</article>
+        <article class="articleContent">{{blog.content | to-snippet}}</article>
       </div>
       <div class="back-top"><a href="#"><i class="el-icon-caret-top"></i></a></div>
     </div>
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
-        name: "showBlogs",
+        name: "ShowBlogs",
       data(){
         return{
           blogs:[],
@@ -22,13 +23,11 @@
         }
       },
       created() {
-          this.$http.get('https://vue-blog-e72a8.firebaseio.com/posts.json')
+          axios.get('https://vue-blog-e72a8.firebaseio.com/posts.json')
             .then(function (data) {
               //console.log(data);
-              //this.blogs = data.body.slice(0,10);
-              //console.log(data.json());
-              return data.json()
-            }).then(function(data){
+              return  data.data ;
+            }).then((data)=>{
               var blogsArray = [];
               for(let key in data){
                 //console.log(key);
@@ -51,38 +50,48 @@
 <style scoped>
 #showBlogs{
   max-width: 720px;
-  margin: 0 auto;
-
+  margin: 80px auto;
+  background-color: #f3f4f4;
+  padding:5px 25px;
+  box-sizing: border-box;
 }
-
+h1{
+  font-size: 30px;
+}
   .single-blog{
     padding: 20px;
     margin:20px 0 ;
     box-sizing: border-box;
-    background:#eee ;
-    border: 1px dotted #aaa;
-
+    background: #fdfdfe;
   }
   #showBlogs a{
     text-decoration: none;
+  }
+  h2{
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  input[type="text"] {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+  }
+.articleContent{
 
-  }
-  input[type="text"]{
-       padding:10px;
-       width: 100%;
-       box-sizing: border-box;
-  }
+}
 .back-top{
   position: fixed;
   top: 600px;
-  right: 380px;
-  width: 40px;
-  height: 40px;
+  right: 330px;
+  width: 50px;
+  height: 50px;
   border: 1px solid #e4e4e4;
-  border-radius: 20px;
+  border-radius: 25px;
 }
 .back-top i{
-  font-size: 40px;
-  color: #bfbfbf;
+  font-size: 50px;
+  color: #444444;
 }
 </style>

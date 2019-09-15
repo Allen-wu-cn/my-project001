@@ -16,22 +16,22 @@
         <input type="checkbox" value="React" v-model="blog.categories">
 
       </div>
-      <label >作者：</label>
+      <label >作者</label>
       <select v-model="blog.author">
         <option  v-for="author in authors">
           {{author}}
         </option>
       </select>
-      <button v-on:click.prevent="post">添加博客</button>
+      <button v-on:click.prevent="post">提交</button>
     </form>
     <div v-if="submmited">
        <h3>您的博客发布成功</h3>
     </div>
-    <div id="preview" >
+    <div id="preview" class="preview" >
       <h3>博客总览</h3>
       <p>博客标题：{{blog.title}}</p>
       <p>博客内容：</p>
-      <p>{{blog.content}}</p>
+      <article>{{blog.content}}</article>
       <p>博客分类:</p>
       <ul>
         <li v-for="category in blog.categories">
@@ -44,28 +44,28 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
-    name: 'addBlog',
+    name: 'AddBlog',
     data () {
       return {
-          blog:{
-            title:'',
-            content:'',
-            categories:[],
-            author:''
-          },
+        blog:{
+          title:'',
+          content:'',
+          categories:[],
+          author:''
+        },
         authors:['kebo','james', 'curry','allen-wu'],
         submmited:false,
       }
     },
     methods:{
-        post:function () {
-          this.$http.post('https://vue-blog-e72a8.firebaseio.com/posts.json', this.blog)
-            .then(function (data) {
-
-              this.submmited = true;
-            })
-        }
+      post:function () {
+        axios.post('https://vue-blog-e72a8.firebaseio.com/posts.json', this.blog)
+          .then((data)=> {
+            this.submmited = true;
+          })
+      }
     }
   }
 </script>
@@ -76,9 +76,13 @@
   box-sizing: border-box;
 }
   #addBlog{
-    margin: 20px auto;
-    max-width: 600px;
-    padding: 20px;
+    margin: 80px auto;
+    max-width: 720px;
+    padding: 5px 25px;
+    background-color: #f3f4f4;
+  }
+  #addBlog h2{
+    font-size: 30px;
   }
   label{
     display: block;
@@ -88,9 +92,10 @@
     display: block;
     width: 100%;
     padding: 8px;
+    border: none;
   }
   textarea{
-    height: 200px;
+    height: 250px;
   }
   #checkboxes label{
     display: inline-block;
@@ -99,22 +104,28 @@
   button{
     display: block;
     margin: 20px 0;
-    background: crimson;
+    background: #039be5;
     color: white;
     border: 0;
-    padding: 14px;
+    padding:7px 15px;
     border-radius:5px ;
     font-size: 18px;
     cursor: pointer;
-
   }
 
-  #preview{
+  .preview{
     padding: 10px 20px;
-    border: 1px dotted #ccc;
+    border: none;
     margin: 30px 0;
+    background-color: #fdfdfe;
   }
-  h3{
-    margin-top: 10px;
+  .preview>h3,p,ul{
+    margin: 10px 0;
+  }
+  h3 {
+    font-size: 25px;
+  }
+  .preview>article{
+    white-space:pre-wrap;
   }
 </style>

@@ -1,6 +1,6 @@
-import showBlogs from "./components/showBlogs"
-import addBlog from "./components/addBlog"
-import singleBlog from "./components/singleBlog"
+import showBlogs from "./components/ShowBlogs"
+import addBlog from "./components/AddBlog"
+import singleBlog from "./components/BlogDetail"
 
 export default [
   {path:"/",component:showBlogs},
