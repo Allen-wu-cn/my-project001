@@ -1,5 +1,5 @@
 <template >
-    <div  id="showBlogs">
+    <div  id="showBlog" class="showBlogs">
        <h1>博客总览</h1>
       <input type="text" v-model="search" placeholder="输入题目搜索...">
       <div v-for="blog in filteredBlogs" class="single-blog">
@@ -48,7 +48,7 @@
 </script>
 
 <style scoped>
-#showBlogs{
+.showBlogs{
   max-width: 720px;
   margin: 80px auto;
   background-color: #f3f4f4;

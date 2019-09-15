@@ -22,11 +22,12 @@ export default {
   nav {
     height: 60px;
     width: 100%;
-    background: rgb(3, 155, 229);
+    background: rgb(17, 152, 255);
     padding: 5px 0;
     margin-bottom: 20px;
     position: fixed;
     top: 0;
+    box-shadow: 0px 1px 7px #001;
   }
   nav .logo{
     float: left;

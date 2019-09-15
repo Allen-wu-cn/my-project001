@@ -1,19 +1,19 @@
 <template>
   <div id="addBlog">
     <h2>添加博客</h2>
-    <form v-if="!submmited">
+    <form v-if="!subSuccess">
       <label>博客标题</label>
-      <input type="text" v-model="blog.title" required>
+      <input type="text" v-model="blog.title" required >
       <label >博客内容</label>
-      <textarea name="" v-model="blog.content"></textarea>
+      <textarea name="" v-model="blog.content" required></textarea>
 
       <div id="checkboxes">
         <label>Vue.js</label>
         <input type="checkbox" value="Vue.js" v-model="blog.categories">
         <label>Node.js</label>
         <input type="checkbox" value="Node.js" v-model="blog.categories">
-        <label>React.js</label>
-        <input type="checkbox" value="React" v-model="blog.categories">
+        <label>微信小程序</label>
+        <input type="checkbox" value="微信小程序" v-model="blog.categories">
 
       </div>
       <label >作者</label>
@@ -22,9 +22,9 @@
           {{author}}
         </option>
       </select>
-      <button v-on:click.prevent="post">提交</button>
+      <button v-on:click="post">提交</button>
     </form>
-    <div v-if="submmited">
+    <div v-if="subSuccess">
        <h3>您的博客发布成功</h3>
     </div>
     <div id="preview" class="preview" >
@@ -47,24 +47,28 @@
   import axios from 'axios'
   export default {
     name: 'AddBlog',
-    data () {
+    data() {
       return {
-        blog:{
-          title:'',
-          content:'',
-          categories:[],
-          author:''
+        blog: {
+          title: '',
+          content: '',
+          categories: [],
+          author: ''
         },
-        authors:['kebo','james', 'curry','allen-wu'],
-        submmited:false,
+        authors: ['kebo', 'james', 'curry', 'allen-wu'],
+        subSuccess: false
       }
     },
-    methods:{
-      post:function () {
-        axios.post('https://vue-blog-e72a8.firebaseio.com/posts.json', this.blog)
-          .then((data)=> {
-            this.submmited = true;
-          })
+    methods: {
+      post: function () {
+        if(this.blog.title !== "") {
+          axios.post('https://vue-blog-e72a8.firebaseio.com/posts.json', this.blog)
+            .then((data) => {
+              this.subSuccess = true;
+            });
+        }else {
+          return false;
+        }
       }
     }
   }
@@ -94,17 +98,24 @@
     padding: 8px;
     border: none;
   }
+/*input:invalid {*/
+/*  box-shadow: 0 0 2px 1px red;*/
+/*}*/
   textarea{
     height: 250px;
   }
   #checkboxes label{
     display: inline-block;
     margin-top: 0;
+    margin-left: 10px;
   }
+#checkboxes label:nth-child(1){
+  margin-left: 0;
+}
   button{
     display: block;
     margin: 20px 0;
-    background: #039be5;
+    background: #1197fe;
     color: white;
     border: 0;
     padding:7px 15px;
