@@ -43,8 +43,10 @@ export default {
   .BlogBody{
     max-width: 720px;
     margin: 80px auto;
+    margin-bottom: 50px;
     background-color: #f2f3f3;
-    padding: 10px 25px;
+    padding: 15px 25px;
+    box-sizing: border-box;
   }
 #single-blog{
   background-color: #fbfcfd;
@@ -58,7 +60,7 @@ h1{
   }
   .DeleteBtn{
     margin-top: 10px;
-    margin-left: 630px;
+    margin-left: 580px;
     background-color: #1988f9;
     color: #ffffff;
   }

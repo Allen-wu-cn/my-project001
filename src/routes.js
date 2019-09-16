@@ -4,6 +4,6 @@ import singleBlog from "./components/BlogDetail"
 
 export default [
   {path:"/",component:showBlogs},
-  {path:"/add",component:addBlog},
+  {path:"/addBlog",component:addBlog},
   {path:"/blog/:id",component:singleBlog}
 ]

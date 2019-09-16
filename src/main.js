@@ -50,7 +50,7 @@ Vue.filter("to-uppercase",function (value) {
 });
 
 Vue.filter("to-snippet",function (value) {
-    return value.slice(0,100) + "...";
+    return value.slice(0,160) + "...";
 });
 
 //创建路由

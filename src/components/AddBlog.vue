@@ -5,7 +5,7 @@
       <label>博客标题</label>
       <input type="text" v-model="blog.title" required >
       <label >博客内容</label>
-      <textarea name="" v-model="blog.content" required></textarea>
+      <textarea name="" v-model="blog.content"></textarea>
 
       <div id="checkboxes">
         <label>Vue.js</label>
@@ -24,9 +24,9 @@
       </select>
       <button v-on:click="post">提交</button>
     </form>
-    <div v-if="subSuccess">
+    <div v-else>
        <h3>您的博客发布成功</h3>
-    </div>
+
     <div id="preview" class="preview" >
       <h3>博客总览</h3>
       <p>博客标题：{{blog.title}}</p>
@@ -39,6 +39,7 @@
         </li>
       </ul>
       <p>作者：{{blog.author}}</p>
+    </div>
     </div>
   </div>
 </template>
@@ -61,13 +62,15 @@
     },
     methods: {
       post: function () {
-        if(this.blog.title !== "") {
-          axios.post('https://vue-blog-e72a8.firebaseio.com/posts.json', this.blog)
-            .then((data) => {
-              this.subSuccess = true;
-            });
+        if(this.blog.title === ''){
+          alert("标题不能为空！");
+          return false
         }else {
-          return false;
+          axios.post('https://vue-blog-e72a8.firebaseio.com/posts.json', this.blog)
+            .then((res) => {
+              //console.log(res.config.data);
+            });
+          this.subSuccess = true;
         }
       }
     }
@@ -81,16 +84,18 @@
 }
   #addBlog{
     margin: 80px auto;
+    margin-bottom: 10px;
     max-width: 720px;
     padding: 5px 25px;
     background-color: #f3f4f4;
+    box-sizing: border-box;
   }
   #addBlog h2{
     font-size: 30px;
   }
   label{
     display: block;
-    margin: 20px 0px 10px;
+    margin: 14px 0px 4px;
   }
   input[type='text'],textarea,select{
     display: block;
@@ -102,7 +107,7 @@
 /*  box-shadow: 0 0 2px 1px red;*/
 /*}*/
   textarea{
-    height: 250px;
+    height: 280px;
   }
   #checkboxes label{
     display: inline-block;

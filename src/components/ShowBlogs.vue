@@ -26,7 +26,7 @@
           axios.get('https://vue-blog-e72a8.firebaseio.com/posts.json')
             .then(function (data) {
               //console.log(data);
-              return  data.data ;
+              return data.data;
             }).then((data)=>{
               var blogsArray = [];
               for(let key in data){
@@ -34,7 +34,8 @@
                 data[key].id = key;
                 blogsArray.push(data[key]);
               }
-              this.blogs = blogsArray;
+              this.blogs = blogsArray.reverse();
+              //console.log(this.blogs)
             })
       },
       computed:{
@@ -51,6 +52,7 @@
 .showBlogs{
   max-width: 720px;
   margin: 80px auto;
+  margin-bottom: 10px;
   background-color: #f3f4f4;
   padding:5px 25px;
   box-sizing: border-box;
@@ -79,19 +81,20 @@ h1{
     border: none;
   }
 .articleContent{
-
+  white-space:pre-wrap;
 }
 .back-top{
   position: fixed;
-  top: 600px;
+  bottom: 130px;
   right: 330px;
   width: 50px;
   height: 50px;
-  border: 1px solid #e4e4e4;
-  border-radius: 25px;
 }
 .back-top i{
   font-size: 50px;
-  color: #444444;
+  color: #e4e4e4;
+  background-color: #1197fe;
+  box-shadow: 0px 1px 5px rgba(7, 10, 51, 0.92);
+  border-radius: 50px;
 }
 </style>

@@ -1,29 +1,24 @@
 <template>
   <div id="app">
-<!--     <addBlog></AddBlog>-->
-<!--    <showBlogs></showBlogs>-->
     <BlogHeader></BlogHeader>
     <router-view></router-view>
+    <BlogFooter></BlogFooter>
   </div>
 </template>
 
 <script>
-//import addBlog from  './components/addBlog'
-//import showBlogs from  './components/showBlogs'
 import BlogHeader from './components/BlogHeader'
+import BlogFooter from './components/BlogFooter'
 
 export default {
   name: 'App',
   components: {
-   // addBlog,
-    //showBlogs,
-    BlogHeader
+    BlogHeader,
+    BlogFooter
   }
 }
 </script>
 
 <style>
-#app{
-  font-family: 微软雅黑;
-}
+
 </style>
